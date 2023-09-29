@@ -9,12 +9,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize:
             const Size.fromHeight(100.0), // Define the preferred height
         child: NavBar(), // Your NavBar widget
       ),
-      body: hotFlexBox(), // Your content goes here
+      body:
+          SingleChildScrollView(child: hotFlexBox()), // Your content goes here
     );
   }
 }
