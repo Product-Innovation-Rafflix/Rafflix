@@ -17,21 +17,30 @@ class FlexBox extends StatelessWidget {
             crossAxisCellCount: 2,
             mainAxisCellCount: 2,
             child: Container(
-              color: Colors.blue, // Set the color or add other properties
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(30))
+                ),// Set the color or add other properties
             ),
           ),
           StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
             child: Container(
-              color: Colors.green, // Set the color or add other properties
+              decoration: BoxDecoration(
+                  color: Colors.green,
+                borderRadius: BorderRadius.all(Radius.circular(30))
+              ),// Set the color or add other properties
             ),
           ),
           StaggeredGridTile.count(
             crossAxisCellCount: 2,
             mainAxisCellCount: 1,
             child: Container(
-              color: Colors.yellow, // Set the color or add other properties
+              decoration: BoxDecoration(
+                  color: Colors.yellow,
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+              ), // Set the color or add other properties
             ),
           ),
         ],
