@@ -3,75 +3,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/utils/text_field.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
   bool passenable = true;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-        child: Material(
-          child: Stack(
-            children: [
-              Positioned(
-                left: -85.w,
-                top: 105.h,
-                child: Container(
-                  width: 356.w,
-                  height: 408.h,
-                  child: Image.asset("images/signin.png"),
-                ),
+          child: Material(
+        child: Stack(
+          children: [
+            Positioned(
+              left: 81.w,
+              top: 40.h,
+              child: Container(
+                width: 362.w,
+                height: 362.h,
+                child: Image.asset("images/signup.png"),
               ),
-              Positioned(
-                top: 70.h,
-                child: Container(
-                  width: screenWidth,
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Text(
-                          'Welcome',
-                          style: TextStyle(
+            ),
+            Positioned(
+              top: 50.h,
+              child: Container(
+                width: screenWidth,
+                child: Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Create new account',
+                        style: TextStyle(
                             color: Colors.black,
                             fontSize: 24.r,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w700,
-                            height: 0,
-                          ),
-                        ),
-                        Text(
-                          'Please sign in to your account',
-                          style: TextStyle(
+                            height: 0),
+                      ),
+                      Text(
+                        'Please fill in the form to continue',
+                        style: TextStyle(
                             color: Colors.black,
                             fontSize: 12.r,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600,
-                            height: 0,
-                          ),
-                        ),
-                      ],
-                    ),
+                            height: 0),
+                      )
+                    ],
                   ),
                 ),
               ),
-              Positioned(
-                top: 450.h,
+            ),
+            Positioned(
+                top: 340.h,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Container(
-                    height: 293.h,
+                    height: 418.h,
                     width: 300.w,
                     child: Column(
                       children: [
+                        InputTextField('Enter your username', 'Username',
+                            Icon(Icons.person_2_outlined)),
+                        SizedBox(height: 15.h),
                         InputTextField('Enter your email', 'Email',
                             Icon(Icons.mail_outlined)),
+                        SizedBox(height: 15.h),
+                        InputTextField('Enter your phone', 'Phone',
+                            Icon(Icons.call_outlined)),
                         SizedBox(height: 15.h),
                         TextField(
                           obscureText: passenable,
@@ -106,10 +110,10 @@ class _SignInState extends State<SignIn> {
                           alignment: Alignment.centerRight,
                           child: InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/forgotPassword');
+                              Navigator.pushNamed(context, '/needHelp');
                             },
                             child: Text(
-                              'Forgot Password?',
+                              'Need Help?',
                               style: TextStyle(
                                   fontSize: 12.r,
                                   fontWeight: FontWeight.bold,
@@ -130,7 +134,7 @@ class _SignInState extends State<SignIn> {
                                     borderRadius: BorderRadius.circular(15)),
                                 elevation: 12.0,
                                 backgroundColor: Color(0xFFFBC02D)),
-                            child: const Text('Sign In',
+                            child: const Text('Sign Up',
                                 style: TextStyle(color: Colors.black)),
                           ),
                         ),
@@ -142,13 +146,16 @@ class _SignInState extends State<SignIn> {
                             mainAxisAlignment: MainAxisAlignment
                                 .center, // Center the content horizontally
                             children: [
-                              Text("Don't have an account? "),
+                              Text(
+                                "Already have an account? ",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                               InkWell(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/Signin');
+                                  Navigator.pushNamed(context, '/signIn');
                                 },
                                 child: Text(
-                                  'Sign Up',
+                                  'Sign In',
                                   style: TextStyle(
                                       fontSize: 12.r,
                                       fontWeight: FontWeight.bold,
@@ -162,12 +169,10 @@ class _SignInState extends State<SignIn> {
                       ],
                     ),
                   ),
-                ),
-              ),
-            ],
-          ),
+                ))
+          ],
         ),
-      ),
+      )),
     );
   }
 }
