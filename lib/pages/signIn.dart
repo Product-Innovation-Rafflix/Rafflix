@@ -11,7 +11,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final _key = GlobalKey<FormState>();
   bool passenable = true;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class _SignInState extends State<SignIn> {
             children: [
               Positioned(
                 left: -85.w,
-                top: 100.h,
+                top: 105.h,
                 child: Container(
                   width: 356.w,
                   height: 408.h,
@@ -62,109 +61,104 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
               ),
-              Form(
-                key: _key,
-                child: Positioned(
-                  top: 450.h,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.w),
-                    child: Container(
-                      height: 300.h,
-                      width: 300.w,
-                      child: Column(
-                        children: [
-                          InputTextField('Enter your email', 'Email',
-                              Icon(Icons.mail_outlined)),
-                          SizedBox(height: 10.h),
-                          TextField(
-                            obscureText: passenable,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: const BorderSide(width: 1),
-                              ),
-                              hintText: 'Enter Your Password',
-                              labelText: 'Password',
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    // Use setState to trigger a rebuild
-                                    passenable = !passenable;
-                                  });
-                                },
-                                icon: Icon((passenable == true)
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                              ),
-                              hintStyle: TextStyle(
-                                fontSize: 14.r,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black,
-                              ),
+              Positioned(
+                top: 450.h,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  child: Container(
+                    height: 293.h,
+                    width: 300.w,
+                    child: Column(
+                      children: [
+                        InputTextField('Enter your email', 'Email',
+                            Icon(Icons.mail_outlined)),
+                        SizedBox(height: 15.h),
+                        TextField(
+                          obscureText: passenable,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: const BorderSide(width: 1),
                             ),
-                          ),
-                          SizedBox(height: 10.h),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/forgotPassword');
-                              },
-                              child: Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                    fontSize: 12.r,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Inter'),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 20.h),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 50.h,
-                            child: ElevatedButton(
+                            hintText: 'Enter Your Password',
+                            labelText: 'Password',
+                            suffixIcon: IconButton(
                               onPressed: () {
-                                if (_key.currentState!.validate()) {}
+                                setState(() {
+                                  // Use setState to trigger a rebuild
+                                  passenable = !passenable;
+                                });
                               },
-                              // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15)),
-                                  elevation: 12.0,
-                                  backgroundColor: Color(0xFFFBC02D)),
-                              child: const Text('Sign In',
-                                  style: TextStyle(color: Colors.black)),
+                              icon: Icon((passenable == true)
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                            ),
+                            hintStyle: TextStyle(
+                              fontSize: 14.r,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black,
                             ),
                           ),
-                          SizedBox(
-                            height: 10.h,
+                        ),
+                        SizedBox(height: 15.h),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/forgotPassword');
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                  fontSize: 12.r,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Inter'),
+                            ),
                           ),
-                          Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .center, // Center the content horizontally
-                              children: [
-                                Text("Don't have an account? "),
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.pushNamed(context, '/Signin');
-                                  },
-                                  child: Text(
-                                    'Sign Up',
-                                    style: TextStyle(
-                                        fontSize: 12.r,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Inter',
-                                        color: Color(0xFFFBC02D)),
-                                  ),
+                        ),
+                        SizedBox(height: 27.h),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50.h,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                elevation: 12.0,
+                                backgroundColor: Color(0xFFFBC02D)),
+                            child: const Text('Sign In',
+                                style: TextStyle(color: Colors.black)),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment
+                                .center, // Center the content horizontally
+                            children: [
+                              Text("Don't have an account? "),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/Signin');
+                                },
+                                child: Text(
+                                  'Sign Up',
+                                  style: TextStyle(
+                                      fontSize: 12.r,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Inter',
+                                      color: Color(0xFFFBC02D)),
                                 ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
