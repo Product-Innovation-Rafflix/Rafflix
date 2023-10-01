@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-TextField InputTextField(String hint, String label, Icon icon) {
-  return TextField(
+TextFormField InputTextField(String hint, String label, Icon icon) {
+  return TextFormField(
+    validator: (value) {
+      return "Error";
+    },
     decoration: InputDecoration(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
