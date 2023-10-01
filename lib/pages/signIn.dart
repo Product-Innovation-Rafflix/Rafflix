@@ -113,7 +113,8 @@ class _SignInState extends State<SignIn> {
                               style: TextStyle(
                                   fontSize: 12.r,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Inter'),
+                                  fontFamily: 'Inter',
+                                  color: Color(0xFFFBC02D)),
                             ),
                           ),
                         ),

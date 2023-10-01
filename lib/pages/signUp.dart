@@ -22,7 +22,7 @@ class _SignUpState extends State<SignUp> {
           children: [
             Positioned(
               left: 81.w,
-              top: 80.h,
+              top: 40.h,
               child: Container(
                 width: 362.w,
                 height: 362.h,
@@ -30,42 +30,45 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             Positioned(
-              top: 70.h,
+              top: 50.h,
               child: Container(
-                child: Column(
-                  children: [
-                    Text(
-                      'Create new account',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24.r,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w700,
-                          height: 0),
-                    ),
-                    Text(
-                      'Please fill in the form to comtinue',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12.r,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w600,
-                          height: 0),
-                    )
-                  ],
+                width: screenWidth,
+                child: Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Create new account',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24.r,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w700,
+                            height: 0),
+                      ),
+                      Text(
+                        'Please fill in the form to continue',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12.r,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                            height: 0),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
             Positioned(
-                top: 315.h,
+                top: 340.h,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Container(
-                    height: 382.h,
+                    height: 418.h,
                     width: 300.w,
                     child: Column(
                       children: [
-                        InputTextField('Enter your username', 'username',
+                        InputTextField('Enter your username', 'Username',
                             Icon(Icons.person_2_outlined)),
                         SizedBox(height: 15.h),
                         InputTextField('Enter your email', 'Email',
@@ -114,7 +117,8 @@ class _SignUpState extends State<SignUp> {
                               style: TextStyle(
                                   fontSize: 12.r,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Inter'),
+                                  fontFamily: 'Inter',
+                                  color: Color(0xFFFBC02D)),
                             ),
                           ),
                         ),
@@ -142,7 +146,10 @@ class _SignUpState extends State<SignUp> {
                             mainAxisAlignment: MainAxisAlignment
                                 .center, // Center the content horizontally
                             children: [
-                              Text("Already have an account? "),
+                              Text(
+                                "Already have an account? ",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                               InkWell(
                                 onTap: () {
                                   Navigator.pushNamed(context, '/signIn');
