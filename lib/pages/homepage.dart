@@ -13,69 +13,50 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 50,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.menu_rounded,
-                color: Colors.black, // Change Custom Drawer Icon Color
+        leading: Image.asset('images/iPhone.png'),
+        title: SizedBox(
+          height: 40,
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: const BorderSide(width: 1),
               ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
-        title: const Text(
-          'RAFFLIX',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            onPressed: () {},
-            padding: const EdgeInsets.only(left: 20),
-            color: Colors.black,
-          ),
-          IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined),
-            onPressed: () {},
-            color: Colors.black,
-          ),
-          IconButton(
-            icon: const Icon(Icons.account_circle_outlined),
-            onPressed: () {},
-            padding: const EdgeInsets.only(right: 20),
-            color: Colors.black,
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
-            child: SizedBox(
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(width: 1),
-                  ),
-                  hintText: 'Search Raffle Item',
-                  contentPadding: const EdgeInsets.all(10.0),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.search_rounded),
-                    onPressed: () {},
-                  ),
-                ),
+              hintText: 'Search Raffle Item',
+              contentPadding: const EdgeInsets.all(10.0),
+              suffixIcon: IconButton(
+                icon: const Icon(Icons.search_rounded),
+                onPressed: () {},
               ),
             ),
           ),
         ),
+        actions: <Widget>[
+          SizedBox(
+            height: 50,
+            width: 70,
+            child: Row(
+              children: [
+                Expanded(
+                  child: IconButton(
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                    padding: const EdgeInsets.only(right: 5),
+                    onPressed: () {},
+                    color: Colors.black,
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    icon: const Icon(Icons.notifications_outlined),
+                    padding: const EdgeInsets.only(right: 10),
+                    onPressed: () {},
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       body:
           SingleChildScrollView(child: hotFlexBox()), // Your content goes here
