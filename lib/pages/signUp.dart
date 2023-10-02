@@ -17,23 +17,14 @@ class _SignUpState extends State<SignUp> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-          child: Material(
-        child: Stack(
-          children: [
-            Positioned(
-              left: 81.w,
-              top: 40.h,
-              child: Container(
-                width: 362.w,
-                height: 362.h,
-                child: Image.asset("images/signup.png"),
-              ),
-            ),
-            Positioned(
-              top: 50.h,
-              child: Container(
-                width: screenWidth,
-                child: Center(
+        child: Material(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 60.h,
+                ),
+                Center(
                   child: Column(
                     children: [
                       Text(
@@ -53,18 +44,22 @@ class _SignUpState extends State<SignUp> {
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600,
                             height: 0),
-                      )
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ),
-            Positioned(
-                top: 340.h,
-                child: Padding(
+                Transform.translate(
+                  offset: Offset(95.w, -20.h),
+                  child: Container(
+                    width: 362.w,
+                    height: 362.h,
+                    child: Image.asset("images/signup.png"),
+                  ),
+                ),
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Container(
-                    height: 418.h,
+                    height: 600.h,
                     width: 300.w,
                     child: Column(
                       children: [
@@ -169,10 +164,12 @@ class _SignUpState extends State<SignUp> {
                       ],
                     ),
                   ),
-                ))
-          ],
+                )
+              ],
+            ),
+          ),
         ),
-      )),
+      ),
     );
   }
 }

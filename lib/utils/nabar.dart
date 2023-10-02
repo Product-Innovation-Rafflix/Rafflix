@@ -14,12 +14,13 @@ class UserProfileDrawer extends StatelessWidget {
             accountName: const Text('Mynn Htet Ko'),
             accountEmail: const Text('mynnhtetko@gmail.com'),
             currentAccountPicture: CircleAvatar(
-              child: ClipOval(child: Image.asset('images/iPhone.png')),
+              child: ClipOval(child: Image.asset('assets/images/iPhone.png')),
             ),
             decoration: BoxDecoration(
                 color: Colors.black,
                 image: DecorationImage(
-                    image: AssetImage('images/luxury.png'), fit: BoxFit.cover)),
+                    image: AssetImage('assets/images/luxury.png'),
+                    fit: BoxFit.cover)),
           ),
           ListTile(
             leading: Icon(Icons.file_upload),
