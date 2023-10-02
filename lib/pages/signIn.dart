@@ -54,7 +54,7 @@ class _SignInState extends State<SignIn> {
                   child: Container(
                     height: 408.h,
                     width: 356.w,
-                    child: Image.asset('images/signin.png'),
+                    child: Image.asset('assets/images/signin.png'),
                   ),
                 ),
                 Padding(
