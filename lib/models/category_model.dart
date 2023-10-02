@@ -15,13 +15,15 @@ class CategoryModel {
 
     categories.add(CategoryModel(
         name: 'Sneaker',
-        imagePath: 'images/sneaker.jpg',
+        imagePath: 'assets/images/sneaker.jpg',
         boxColor: Colors.red));
     categories.add(CategoryModel(
-        name: 'iPhone', imagePath: 'images/iPhone.png', boxColor: Colors.cyan));
+        name: 'iPhone',
+        imagePath: 'assets/images/iPhone.png',
+        boxColor: Colors.cyan));
     categories.add(CategoryModel(
         name: 'Luxury Item',
-        imagePath: 'images/luxury.png',
+        imagePath: 'assets/images/luxury.png',
         boxColor: Colors.blue));
     return categories;
   }

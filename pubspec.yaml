@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_staggered_grid_view: ^0.7.0
   image_network: ^2.5.4+1
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:
@@ -60,9 +61,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/iPhone.png
-    - images/luxury.png
-    - images/sneaker.jpg
+    - assets/images/iPhone.png
+    - assets/images/luxury.png
+    - assets/images/sneaker.jpg
+    - assets/images/signin.png
+    - assets/images/signup.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
