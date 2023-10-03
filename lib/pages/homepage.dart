@@ -11,7 +11,6 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 50,
-        leading: Image.asset('assets/images/logo.png'),
         title: SizedBox(
           height: 40,
           child: TextField(
@@ -35,14 +34,6 @@ class HomePage extends StatelessWidget {
             width: 70,
             child: Row(
               children: [
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.shopping_cart_outlined),
-                    padding: const EdgeInsets.only(right: 5),
-                    onPressed: () {},
-                    color: Colors.black,
-                  ),
-                ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.notifications_outlined),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/models/category_model.dart';
+import 'package:rafflix/models/Recommend_slider_model.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -11,6 +12,12 @@ class hotFlexBox extends StatelessWidget {
 
   void _getCategories() {
     categories = CategoryModel.getCategories();
+  }
+
+  List<RecommendImages> images = [];
+
+  void _getimages() {
+    images = RecommendImages.getImages();
   }
 
   @override
@@ -82,19 +89,19 @@ class hotFlexBox extends StatelessWidget {
                 mainAxisCellCount: 2,
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color(0xffFBC02D),
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          15)),
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/Current Events.png'),
-                  ),
+                    color: Color(0xffFBC02D),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/Current Events.png'),
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top:25, left: 10),
-                        child: Text('Current',
+                        padding: const EdgeInsets.only(top: 25, left: 10),
+                        child: Text(
+                          'Current',
                           style: TextStyle(
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.bold,
@@ -103,8 +110,9 @@ class hotFlexBox extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 0,left: 10),
-                        child: Text('Events',
+                        padding: const EdgeInsets.only(top: 0, left: 10),
+                        child: Text(
+                          'Events',
                           style: TextStyle(
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.bold,
@@ -113,29 +121,29 @@ class hotFlexBox extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),// Set the color or add other properties
+                  ), // Set the color or add other properties
                 ),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 1,
                 child: Container(
-                  decoration: BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xffFBC02D),
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          15),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
                       ),
                       image: DecorationImage(
-                          image: AssetImage('assets/images/Upcoming Events.png'),
-
+                        image: AssetImage('assets/images/Upcoming Events.png'),
                       ),
-                  ),
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top:25, left: 10),
-                          child: Text('Upcoming',
+                          padding: const EdgeInsets.only(top: 25, left: 10),
+                          child: Text(
+                            'Upcoming',
                             style: TextStyle(
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.bold,
@@ -144,8 +152,9 @@ class hotFlexBox extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 0,left: 10),
-                          child: Text('Events',
+                          padding: const EdgeInsets.only(top: 0, left: 10),
+                          child: Text(
+                            'Events',
                             style: TextStyle(
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.bold,
@@ -154,52 +163,52 @@ class hotFlexBox extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )// Set the color or add other properties
-                ),
+                    ) // Set the color or add other properties
+                    ),
               ),
               StaggeredGridTile.count(
-                crossAxisCellCount: 2,
-                mainAxisCellCount: 1,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xffFBC02D),
-                        borderRadius: BorderRadius.all(Radius.circular(
-                            15),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/Previous Events.png'),
-                          alignment:
-                        ),
+                  crossAxisCellCount: 2,
+                  mainAxisCellCount: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xffFBC02D),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
                       ),
-
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top:25, left: 10),
-                            child: Text('Previous',
-                              style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.r,
-                              ),
+                      image: DecorationImage(
+                          image:
+                              AssetImage('assets/images/Previous Events.png'),
+                          alignment: Alignment(1.w, 1.h)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 25, left: 10),
+                          child: Text(
+                            'Previous',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.r,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 0,left: 10),
-                            child: Text('Events',
-                              style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.r,
-                              ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 0, left: 10),
+                          child: Text(
+                            'Events',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.r,
                             ),
                           ),
-                        ],
-                      ),
-                    )// Set the color or add other properties
-                ),
-
+                        ),
+                      ],
+                    ),
+                  ) // Set the color or add other properties
+                  ),
             ],
           ),
         ),
@@ -209,81 +218,47 @@ class hotFlexBox extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: Text(
-            'HOT',
+            'Recommanded \nFor You',
             style: TextStyle(
                 color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
           ),
         ),
-        Container(
-          margin: const EdgeInsets.all(15),
-          child: StaggeredGrid.count(
-            crossAxisCount: 3,
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
-            children: [
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 1.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          15))), // Set the color or add other properties
-                ),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 1.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
-                ),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 1.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
-                ),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 1.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
-                ),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 1.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
-                ),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 1.5,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
-                ),
-              ),
-            ],
-          ),
+        SizedBox(
+          height: 15.h,
         ),
+        Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Container(
+                color: Colors.red,
+                height: 161.h,
+                child: ListView.separated(
+                  itemCount: images.length,
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  separatorBuilder: (context, index) => SizedBox(
+                    width: 10.w,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                        width: 161.w,
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              width: 150.w,
+                              height: 150.h,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset(images[index].imagePath),
+                              ),
+                            ),
+                          ],
+                        ));
+                  },
+                )))
       ],
     );
   }

@@ -37,6 +37,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   image_network: ^2.5.4+1
   flutter_screenutil: ^5.9.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -61,17 +62,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/iPhone.svg
-    - assets/images/Diamond.svg
-    - assets/images/Sneaker.svg
-    - assets/images/Car.svg
-    - assets/images/Home.svg
-    - assets/images/signin.png
-    - assets/images/signup.png
-    - assets/images/Current Events.png
-    - assets/images/Previous Events.png
-    - assets/images/Upcoming Events.png
-    - assets/images/logo.png
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
