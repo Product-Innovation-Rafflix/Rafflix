@@ -12,13 +12,13 @@ class CategoryModel {
     List<CategoryModel> categories = [];
 
     categories.add(CategoryModel(
-        imagePath: 'images/sneaker.jpg', boxColor: Color(0xffFBC02D)));
+        imagePath: 'assets/images/sneaker.jpg', boxColor: Color(0xffFBC02D)));
     categories.add(CategoryModel(
-        imagePath: 'images/iPhone.png', boxColor: Color(0xffFBC02D)));
+        imagePath: 'assets/images/iPhone.png', boxColor: Color(0xffFBC02D)));
     categories.add(CategoryModel(
-        imagePath: 'images/luxury.png', boxColor: Color(0xffFBC02D)));
+        imagePath: 'assets/images/luxury.png', boxColor: Color(0xffFBC02D)));
     categories.add(CategoryModel(
-        imagePath: 'images/luxury.png', boxColor: Color(0xffFBC02D)));
+        imagePath: 'assets/images/luxury.png', boxColor: Color(0xffFBC02D)));
     categories.add(CategoryModel(
         imagePath: 'assets/images/luxury.png', boxColor: Color(0xffFBC02D)));
     return categories;
