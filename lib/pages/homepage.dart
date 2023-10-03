@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 50,
-        leading: Image.asset('assets/images/iPhone.png'),
+        leading: Image.asset('assets/images/logo.png'),
         title: SizedBox(
           height: 40,
           child: TextField(

@@ -82,9 +82,38 @@ class hotFlexBox extends StatelessWidget {
                 mainAxisCellCount: 2,
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Color(0xffFBC02D),
                       borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
+                          15)),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/Current Events.png'),
+                  ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top:25, left: 10),
+                        child: Text('Current',
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24.r,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0,left: 10),
+                        child: Text('Events',
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32.r,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),// Set the color or add other properties
                 ),
               ),
               StaggeredGridTile.count(
@@ -92,21 +121,85 @@ class hotFlexBox extends StatelessWidget {
                 mainAxisCellCount: 1,
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Color(0xffFBC02D),
                       borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
+                          15),
+                      ),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/Upcoming Events.png'),
+
+                      ),
+                  ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top:25, left: 10),
+                          child: Text('Upcoming',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.r,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 0,left: 10),
+                          child: Text('Events',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.r,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )// Set the color or add other properties
                 ),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 1,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffFBC02D),
+                        borderRadius: BorderRadius.all(Radius.circular(
+                            15),
+                        ),
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/Previous Events.png'),
+                          alignment:
+                        ),
+                      ),
+
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top:25, left: 10),
+                            child: Text('Previous',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.r,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,left: 10),
+                            child: Text('Events',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.r,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )// Set the color or add other properties
                 ),
-              ),
+
             ],
           ),
         ),
@@ -135,7 +228,7 @@ class hotFlexBox extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.all(Radius.circular(
-                          30))), // Set the color or add other properties
+                          15))), // Set the color or add other properties
                 ),
               ),
               StaggeredGridTile.count(

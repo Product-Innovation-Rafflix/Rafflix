@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? widget) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          // home: HomePage(),
-          home: SignIn(),
+          home: HomePage(),
+          // home: SignIn(),
           // home: SignUp(),
         );
       },
