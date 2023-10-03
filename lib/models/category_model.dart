@@ -20,7 +20,7 @@ class CategoryModel {
     categories.add(CategoryModel(
         imagePath: 'images/luxury.png', boxColor: Color(0xffFBC02D)));
     categories.add(CategoryModel(
-        imagePath: 'images/luxury.png', boxColor: Color(0xffFBC02D)));
+        imagePath: 'assets/images/luxury.png', boxColor: Color(0xffFBC02D)));
     return categories;
   }
 }
