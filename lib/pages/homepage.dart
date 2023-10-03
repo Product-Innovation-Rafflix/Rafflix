@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rafflix/utils/hotFlexBox.dart';
-import 'package:rafflix/utils/nabar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,7 +8,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: UserProfileDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 50,

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CategoryModel {
-  String name;
   String imagePath;
   Color boxColor;
 
   CategoryModel({
-    required this.name,
     required this.imagePath,
     required this.boxColor,
   });
@@ -14,15 +12,15 @@ class CategoryModel {
     List<CategoryModel> categories = [];
 
     categories.add(CategoryModel(
-        name: 'Sneaker',
-        imagePath: 'images/sneaker.jpg',
-        boxColor: Colors.red));
+        imagePath: 'images/sneaker.jpg', boxColor: Color(0xffFBC02D)));
     categories.add(CategoryModel(
-        name: 'iPhone', imagePath: 'images/iPhone.png', boxColor: Colors.cyan));
+        imagePath: 'images/iPhone.png', boxColor: Color(0xffFBC02D)));
     categories.add(CategoryModel(
-        name: 'Luxury Item',
-        imagePath: 'images/luxury.png',
-        boxColor: Colors.blue));
+        imagePath: 'images/luxury.png', boxColor: Color(0xffFBC02D)));
+    categories.add(CategoryModel(
+        imagePath: 'images/luxury.png', boxColor: Color(0xffFBC02D)));
+    categories.add(CategoryModel(
+        imagePath: 'images/luxury.png', boxColor: Color(0xffFBC02D)));
     return categories;
   }
 }

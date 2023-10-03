@@ -76,11 +76,11 @@ class _SignInState extends State<SignIn> {
                         TextField(
                           obscureText: passenable,
                           decoration: InputDecoration(
+                            hintText: 'Enter Your Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: const BorderSide(width: 1),
                             ),
-                            hintText: 'Enter Your Password',
                             labelText: 'Password',
                             suffixIcon: IconButton(
                               onPressed: () {
@@ -97,7 +97,7 @@ class _SignInState extends State<SignIn> {
                               fontSize: 14.r,
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w700,
-                              color: Colors.black,
+                              color: Colors.grey,
                             ),
                           ),
                         ),
@@ -113,8 +113,7 @@ class _SignInState extends State<SignIn> {
                               style: TextStyle(
                                   fontSize: 12.r,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Inter',
-                                  color: Color(0xFFFBC02D)),
+                                  fontFamily: 'Inter'),
                             ),
                           ),
                         ),
@@ -145,7 +144,7 @@ class _SignInState extends State<SignIn> {
                               Text("Don't have an account? "),
                               InkWell(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/Signin');
+                                  Navigator.pushNamed(context, '/signUp');
                                 },
                                 child: Text(
                                   'Sign Up',

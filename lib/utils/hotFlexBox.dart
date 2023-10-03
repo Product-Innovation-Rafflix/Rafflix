@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/models/category_model.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -32,46 +33,39 @@ class hotFlexBox extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        Container(
-          height: 150,
-          color: Colors.white,
-          child: ListView.separated(
-              itemCount: categories.length,
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.only(left: 20, right: 20),
-              separatorBuilder: (context, index) => SizedBox(
-                    width: 4,
-                  ),
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 130,
-                  decoration: BoxDecoration(
-                      color: categories[index].boxColor.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: const BoxDecoration(
-                            color: Colors.white, shape: BoxShape.circle),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(categories[index].imagePath),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: Container(
+            height: 61,
+            child: ListView.separated(
+                itemCount: categories.length,
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.only(left: 10, right: 10),
+                separatorBuilder: (context, index) => SizedBox(
+                      width: 10,
+                    ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: 61,
+                    decoration: BoxDecoration(
+                        color: categories[index].boxColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 50.w,
+                          height: 50.h,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(categories[index].imagePath),
+                          ),
                         ),
-                      ),
-                      Text(
-                        categories[index].name,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black,
-                            fontSize: 19),
-                      )
-                    ],
-                  ),
-                );
-              }),
+                      ],
+                    ),
+                  );
+                }),
+          ),
         ),
         SizedBox(
           height: 15,
