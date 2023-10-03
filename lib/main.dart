@@ -3,6 +3,7 @@ import 'package:rafflix/pages/homepage.dart';
 import 'package:rafflix/pages/signIn.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/pages/signUp.dart';
+import 'package:rafflix/pages/UseProfile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +20,9 @@ class MyApp extends StatelessWidget {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
           // home: HomePage(),
-          home: SignIn(),
+          // home: SignIn(),
           // home: SignUp(),
+          home: AccountPage(),
         );
       },
     );
