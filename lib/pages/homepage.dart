@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
       ),
       body:
           SingleChildScrollView(child: hotFlexBox()), // Your content goes here
-      // bottomNavigationBar: BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(),
     );
     // return mainSide();
   }

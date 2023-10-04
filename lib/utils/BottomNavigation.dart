@@ -18,23 +18,22 @@ class _BottomNavigationState extends State<BottomNavigation> {
       destinations: const <Widget>[
         NavigationDestination(
           selectedIcon: Icon(Icons.home),
-          icon: Icon(Icons.home),
+          icon: Icon(Icons.home_outlined),
           label: 'Home',
         ),
         NavigationDestination(
-          selectedIcon: Icon(Icons.border_all_outlined),
           icon: Icon(Icons.border_all_outlined),
-          label: 'Browse',
+          label: 'Business',
         ),
         NavigationDestination(
           selectedIcon: Icon(Icons.replay_circle_filled),
-          icon: Icon(Icons.replay_circle_filled),
-          label: 'Exchange',
+          icon: Icon(Icons.school_outlined),
+          label: 'School',
         ),
         NavigationDestination(
           selectedIcon: Icon(Icons.person_2_outlined),
-          icon: Icon(Icons.person_2_outlined),
-          label: 'Profile',
+          icon: Icon(Icons.school_outlined),
+          label: 'School',
         ),
       ],
     );
