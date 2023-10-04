@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafflix/utils/hotFlexBox.dart';
+import 'package:rafflix/utils/BottomNavigation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,6 +50,7 @@ class HomePage extends StatelessWidget {
       ),
       body:
           SingleChildScrollView(child: hotFlexBox()), // Your content goes here
+      bottomNavigationBar: BottomNavigation(),
     );
     // return mainSide();
   }
