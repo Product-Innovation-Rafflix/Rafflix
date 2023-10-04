@@ -12,22 +12,19 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xfffffffff),
-      body: ListView(
-        padding: EdgeInsets.all(12),
-        physics: BouncingScrollPhysics(),
-        children: [
-          Container(
-            height: 35,
-          ),
-          userTile(),
-          divider(),
-          colorTiles(),
-          divider(),
-          bwTiles(),
-        ],
-      ),
+    return ListView(
+      padding: EdgeInsets.all(12),
+      physics: BouncingScrollPhysics(),
+      children: [
+        Container(
+          height: 35,
+        ),
+        userTile(),
+        divider(),
+        colorTiles(),
+        divider(),
+        bwTiles(),
+      ],
     );
   }
 
