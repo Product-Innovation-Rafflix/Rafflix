@@ -32,7 +32,8 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget userTile() {
-    String url = "";
+    String url =
+        "https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg";
     return ListTile(
       leading: CircleAvatar(
         backgroundImage: NetworkImage(url),
@@ -57,25 +58,27 @@ class _AccountPageState extends State<AccountPage> {
   Widget colorTiles() {
     return Column(
       children: [
-        colorTile(Icons.person_outline, Colors.deepPurple, "Personal data"),
-        colorTile(Icons.settings_outlined, Colors.blue, "Setting"),
-        colorTile(Icons.credit_card, Colors.pink, "Payment"),
+        colorTile(Icons.person_outline, Colors.deepPurple, "Personal data",
+            blackandWhite: false),
+        colorTile(Icons.settings_outlined, Colors.blue, "Setting",
+            blackandWhite: false),
+        colorTile(Icons.credit_card, Colors.pink, "Payment",
+            blackandWhite: false),
         colorTile(Icons.favorite_border, Colors.orange, "Personal data",
-            blackandWhite),
+            blackandWhite: false),
       ],
     );
   }
 
   Widget bwTiles() {
     //Color color = Colors.blueGrey;
-    
 
     return Column(
       children: [
-        bwTile(Icons.info_outline, "FAQs")
+        bwTile(Icons.info_outline, "FAQs"),
         bwTile(Icons.border_color_outlined, "Handbook"),
         bwTile(Icons.textsms_outlined, "Community"),
-        ],
+      ],
     );
   }
 
@@ -84,31 +87,27 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget colorTile(IconData icon, Color color, String text,
-      {bool blackAndWhite = false, required bool blackandWhite}) {
-        Color color = Colors.black12;
+      {bool blackandWhite = false}) {
     return ListTile(
       leading: Container(
         child: Icon(
           icon,
-          color: color,
+          color: blackandWhite ? Color(0xfff3f4fe) : color.withOpacity(0.10),
         ),
         height: 45,
         width: 45,
         decoration: BoxDecoration(
-            color: blackAndWhite ? Color(0xfff3f4fe) : color.withOpacity(0.10),
-            borderRadius: BorderRadius.circular(18)),
+          color: blackandWhite ? Color(0xfff3f4fe) : color.withOpacity(0.10),
+          borderRadius: BorderRadius.circular(18),
+        ),
       ),
+      title: Text(
+        text,
+        style: TextStyle(fontWeight: FontWeight.w500),
+      ),
+      trailing: Icon(Icons.arrow_forward_ios, color: Colors.black, size: 20),
     );
-    title:
-    Txt(
-      text: text,
-      fontWeight: FontWeight.w500,
-    );
-    trailing:
-    Icon(Icons.arrow_forward_ios, color: Colors.black, size: 20);
-    }
-
-   
+  }
 }
 
 class Txt extends StatelessWidget {
