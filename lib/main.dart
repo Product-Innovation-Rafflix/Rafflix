@@ -81,15 +81,15 @@ class _MainWidgetState extends State<MainWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.category_rounded),
-            label: 'Home',
+            label: 'Items',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.replay_circle_filled),
-            label: 'Profile',
+            label: 'Exchange',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_2_rounded),
-            label: 'Settings',
+            label: 'Profile',
           ),
         ],
       ),
