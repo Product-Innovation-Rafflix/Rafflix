@@ -14,9 +14,7 @@ class MyCarouselSlider extends StatefulWidget {
 class _MyCarouselSliderState extends State<MyCarouselSlider> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 95, 165, 223),
-      body: Column(
+    return Column(
         children: [
           SizedBox(height: 30.h),
           CarouselSlider.builder(
@@ -37,8 +35,7 @@ class _MyCarouselSliderState extends State<MyCarouselSlider> {
             ),
           ),
         ],
-      ),
-    );
+      );
   }
 }
 
