@@ -8,12 +8,12 @@ const carruselImages = <Receta>[
       description: "That is about iPhone"),
   Receta(
       id: 2,
-      name: "Previous Event",
-      image: "assets/images/Previous Events.png",
-      description: "That is about previous event"),
+      name: "iPhone",
+      image: "assets/images/iPhone.jpg",
+      description: "That is about iPhone"),
   Receta(
-      id: 1,
-      name: "Upcoming Event",
-      image: "assets/images/Upcoming Events.png",
-      description: "That is about upcoming event"),
+      id: 3,
+      name: "iPhone",
+      image: "assets/images/iPhone.jpg",
+      description: "That is about iPhone"),
 ];

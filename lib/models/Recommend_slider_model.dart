@@ -8,11 +8,11 @@ class RecommendImages {
   static List<RecommendImages> getImages() {
     List<RecommendImages> images = [];
 
-    images.add(RecommendImages(imagePath: 'assets/images/signin.png'));
-    images.add(RecommendImages(imagePath: 'assets/images/signin.png'));
-    images.add(RecommendImages(imagePath: 'assets/images/Diamond.svg'));
-    images.add(RecommendImages(imagePath: 'assets/images/Car.svg'));
-    images.add(RecommendImages(imagePath: 'assets/images/Home.svg'));
+    images.add(RecommendImages(imagePath: 'assets/images/Sneaker.png'));
+    images.add(RecommendImages(imagePath: 'assets/images/iPhone.png'));
+    images.add(RecommendImages(imagePath: 'assets/images/Diamond.png'));
+    images.add(RecommendImages(imagePath: 'assets/images/Car.png'));
+    images.add(RecommendImages(imagePath: 'assets/images/Home.png'));
     return images;
   }
 }
