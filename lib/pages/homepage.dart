@@ -48,24 +48,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body:
-          SingleChildScrollView(child: hotFlexBox()), // Your content goes here
-      bottomNavigationBar: BottomNavigation(),
+      body: SingleChildScrollView(child: hotFlexBox()),
     );
-    // return mainSide();
   }
 }
-
-// class NavBar extends StatefulWidget {
-//   const NavBar({Key? key}) : super(key: key);
-
-//   @override
-//   State<NavBar> createState() => _NavBarState();
-// }
-
-// class _NavBarState extends State<NavBar> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ;
-//   }
-// }
