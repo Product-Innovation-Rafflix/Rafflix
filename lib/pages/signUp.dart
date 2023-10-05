@@ -53,7 +53,7 @@ class _SignUpState extends State<SignUp> {
                   child: Container(
                     width: 362.w,
                     height: 362.h,
-                    child: Image.asset("images/signup.png"),
+                    child: Image.asset("assets/images/signup.png"),
                   ),
                 ),
                 Padding(
