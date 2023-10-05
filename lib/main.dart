@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/pages/signUp.dart';
 import 'package:rafflix/pages/UseProfile.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
