@@ -98,7 +98,6 @@ class _CheckYourMessagesState extends State<CheckYourMessages> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 1),
     );
   }
 }
