@@ -1,6 +1,7 @@
 // ignore_for_file: empty_statements
 
 import 'package:flutter/material.dart';
+import 'package:rafflix/utils/BottomNavigationBar.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _AccountPageState extends State<AccountPage> {
           bwTiles(),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 3),
     );
   }
 
