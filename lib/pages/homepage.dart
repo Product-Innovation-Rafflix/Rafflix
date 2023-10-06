@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafflix/utils/hotFlexBox.dart';
-import 'package:rafflix/utils/nabar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,13 +9,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: UserProfileDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
-        toolbarHeight: 50,
-        leading: Image.asset('assets/images/iPhone.png'),
+        toolbarHeight: 60.h,
         title: SizedBox(
-          height: 40,
+          height: 40.h,
           child: TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -32,19 +30,46 @@ class HomePage extends StatelessWidget {
           ),
         ),
         actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
+            child: Container(
+              height: 40.h,
+              decoration: BoxDecoration(
+                // Background color of the container
+                borderRadius: BorderRadius.circular(
+                    20.0), // Border radius for rounded corners
+                border: Border.all(
+                  color: Colors.black, // Border color
+                  width: 1.5, // Border width
+                ),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 5.w,
+                  ),
+                  Text(
+                    '15000',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Container(
+                    height: 30.h, // Adjust the height of the icon as needed
+                    width: 30
+                        .h, // Set the width to match the height for a circular icon
+                    child: Icon(
+                      Icons.account_balance_wallet_rounded,
+                      color: Colors.black, // Change the icon color
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           SizedBox(
             height: 50,
             width: 70,
             child: Row(
               children: [
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.shopping_cart_outlined),
-                    padding: const EdgeInsets.only(right: 5),
-                    onPressed: () {},
-                    color: Colors.black,
-                  ),
-                ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.notifications_outlined),
@@ -58,23 +83,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body:
-          SingleChildScrollView(child: hotFlexBox()), // Your content goes here
+      body: SingleChildScrollView(child: hotFlexBox()),
     );
-    // return mainSide();
   }
 }
-
-// class NavBar extends StatefulWidget {
-//   const NavBar({Key? key}) : super(key: key);
-
-//   @override
-//   State<NavBar> createState() => _NavBarState();
-// }
-
-// class _NavBarState extends State<NavBar> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ;
-//   }
-// }

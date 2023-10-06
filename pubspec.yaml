@@ -37,6 +37,8 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   image_network: ^2.5.4+1
   flutter_screenutil: ^5.9.0
+  carousel_slider: ^4.2.1
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -61,11 +63,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/iPhone.png
-    - assets/images/luxury.png
-    - assets/images/sneaker.jpg
-    - assets/images/signin.png
-    - assets/images/signup.png
+    - assets/images/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -78,17 +77,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: CustomIcons
+      fonts:
+        - asset: fonts/CustomIcons.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
