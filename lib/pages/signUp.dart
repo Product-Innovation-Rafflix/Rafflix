@@ -59,7 +59,7 @@ class _SignUpState extends State<SignUp> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Container(
-                    height: 600.h,
+                    height: 300.h,
                     width: 300.w,
                     child: Column(
                       children: [
