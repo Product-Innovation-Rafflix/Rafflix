@@ -19,7 +19,10 @@ class HomePage extends StatelessWidget {
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
-                borderSide: const BorderSide(width: 1),
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Colors.black,
+                ),
               ),
               hintText: 'Search Raffle Item',
               contentPadding: const EdgeInsets.all(10.0),

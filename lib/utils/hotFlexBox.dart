@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/models/category_model.dart';
 import 'package:rafflix/models/Recommend_slider_model.dart';
 import 'package:rafflix/utils/sideBar.dart';
-
+import 'package:rafflix/utils/ItemCard.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class hotFlexBox extends StatelessWidget {
@@ -40,7 +40,9 @@ class hotFlexBox extends StatelessWidget {
             child: Text(
               'CATEGORIES',
               style: TextStyle(
-                  color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           SizedBox(
@@ -51,33 +53,33 @@ class hotFlexBox extends StatelessWidget {
             child: Container(
               height: 61,
               child: ListView.separated(
-                  itemCount: categories.length,
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.only(left: 10, right: 10),
-                  separatorBuilder: (context, index) => SizedBox(
-                        width: 10,
-                      ),
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 61,
-                      decoration: BoxDecoration(
-                          color: categories[index].boxColor,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            width: 50.w,
-                            height: 50.h,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset(categories[index].imagePath),
-                            ),
+                itemCount: categories.length,
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.only(left: 10, right: 10),
+                separatorBuilder: (context, index) => SizedBox(
+                  width: 10,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: 61,
+                    decoration: BoxDecoration(
+                        color: categories[index].boxColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 50.w,
+                          height: 50.h,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(categories[index].imagePath),
                           ),
-                        ],
-                      ),
-                    );
-                  },
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -141,7 +143,8 @@ class hotFlexBox extends StatelessWidget {
                           Radius.circular(15),
                         ),
                         image: DecorationImage(
-                          image: AssetImage('assets/images/Upcoming Events.png'),
+                          image:
+                              AssetImage('assets/images/Upcoming Events.png'),
                         ),
                       ),
                       child: Column(
@@ -227,7 +230,9 @@ class hotFlexBox extends StatelessWidget {
             child: Text(
               'Recommanded \nFor You',
               style: TextStyle(
-                  color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           SizedBox(
@@ -235,40 +240,35 @@ class hotFlexBox extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Container(
-              height: 161.h,
-              child: ListView.separated(
-                itemCount: categories.length,
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(left: 10, right: 10),
-                separatorBuilder: (context, index) => SizedBox(
-                  width: 10,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: SizedBox(
+                height: 205.h,
+                child: Row(
+                  children: [
+                    MyCard(
+                        name: 'iPhone 15 Pro Max',
+                        price: '5000 MMK / ticket',
+                        imgPath: 'assets/images/iPhone15ProMax.jpg',
+                        TicketLeft: 50,
+                        context: context),
+                    MyCard(
+                        name: 'iPhone 15 Pro Max',
+                        price: '5000 MMK / ticket',
+                        imgPath: 'assets/images/iPhone15ProMax.jpg',
+                        TicketLeft: 50,
+                        context: context),
+                    MyCard(
+                        name: 'iPhone 15 Pro Max',
+                        price: '5000 MMK / ticket',
+                        imgPath: 'assets/images/iPhone15ProMax.jpg',
+                        TicketLeft: 50,
+                        context: context),
+                  ],
                 ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    width: 150.h,
-                    decoration: BoxDecoration(
-                        color: categories[index].boxColor,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: 50.w,
-                          height: 50.h,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(categories[index].imagePath),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
               ),
             ),
           ),
-
         ],
       ),
     );
