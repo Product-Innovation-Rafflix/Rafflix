@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafflix/utils/BottomNavigationBar.dart';
 import 'package:rafflix/utils/hotFlexBox.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -84,6 +85,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(child: hotFlexBox()),
+      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 0),
     );
   }
 }

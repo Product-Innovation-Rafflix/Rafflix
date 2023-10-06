@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rafflix/utils/BottomNavigationBar.dart';
 import 'package:rafflix/utils/text_field.dart';
 
 class ResetPass extends StatefulWidget {
@@ -99,6 +100,7 @@ class _ResetPassState extends State<ResetPass> {
           ),
         ),
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 2),
     );
   }
 }

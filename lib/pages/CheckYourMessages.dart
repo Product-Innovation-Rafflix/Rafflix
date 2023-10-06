@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rafflix/utils/BottomNavigationBar.dart';
 import 'package:rafflix/utils/text_field.dart';
 
 class CheckYourMessages extends StatefulWidget {
@@ -97,6 +98,7 @@ class _CheckYourMessagesState extends State<CheckYourMessages> {
           ),
         ),
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 1),
     );
   }
 }
