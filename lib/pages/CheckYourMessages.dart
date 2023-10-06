@@ -3,15 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/utils/BottomNavigationBar.dart';
 import 'package:rafflix/utils/text_field.dart';
 
-class ResetPass extends StatefulWidget {
-  const ResetPass({Key? key}) : super(key: key);
+class CheckYourMessages extends StatefulWidget {
+  const CheckYourMessages({Key? key}) : super(key: key);
 
   @override
-  State<ResetPass> createState() => _ResetPassState();
+  State<CheckYourMessages> createState() => _CheckYourMessagesState();
 }
 
-class _ResetPassState extends State<ResetPass> {
+class _CheckYourMessagesState extends State<CheckYourMessages> {
   bool passenable = true;
+  bool repassenable = true;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -21,14 +22,25 @@ class _ResetPassState extends State<ResetPass> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
+                SizedBox(
+                  height: 117.h,
+                ),
+                Transform.translate(
+                  offset: Offset(0.w, 0.h),
+                  child: Container(
+                    height: 283.h,
+                    width: 283.w,
+                    child: Image.network('https://via.placeholder.com/283x283'),
+                  ),
+                ),
                 Center(
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 70.h,
+                        height: 9.h,
                       ),
                       Text(
-                        'Reset Password',
+                        'Check Your message',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 24.r,
@@ -38,7 +50,7 @@ class _ResetPassState extends State<ResetPass> {
                         ),
                       ),
                       Text(
-                        'Enter the email related with your account \nWe will send a message to reset your password ',
+                        'Enter the email related with your account.\nWe’ will send an email to reset your password ',
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12.r,
@@ -51,18 +63,7 @@ class _ResetPassState extends State<ResetPass> {
                   ),
                 ),
                 SizedBox(
-                  height: 16.h,
-                ),
-                Transform.translate(
-                  offset: Offset(0, 0),
-                  child: Container(
-                    height: 266.h,
-                    width: 291.w,
-                    child: Image.network("https://via.placeholder.com/291x266"),
-                  ),
-                ),
-                SizedBox(
-                  height: 16,
+                  height: 39.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -72,9 +73,6 @@ class _ResetPassState extends State<ResetPass> {
                     child: Form(
                       child: Column(
                         children: [
-                          InputTextField('Enter your phone', 'Phone',
-                              const Icon(Icons.phone_rounded)),
-                          SizedBox(height: 15.h),
                           SizedBox(
                             width: double.infinity,
                             height: 50.h,
@@ -86,7 +84,7 @@ class _ResetPassState extends State<ResetPass> {
                                       borderRadius: BorderRadius.circular(15)),
                                   elevation: 12.0,
                                   backgroundColor: Color(0xFFFBC02D)),
-                              child: const Text('Reset Password',
+                              child: const Text('Open Message',
                                   style: TextStyle(color: Colors.black)),
                             ),
                           ),
@@ -100,7 +98,6 @@ class _ResetPassState extends State<ResetPass> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 2),
     );
   }
 }
