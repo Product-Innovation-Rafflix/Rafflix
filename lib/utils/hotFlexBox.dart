@@ -269,6 +269,9 @@ class hotFlexBox extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: 15,
+          ),
         ],
       ),
     );

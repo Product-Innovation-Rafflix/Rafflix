@@ -4,6 +4,8 @@ import 'package:rafflix/pages/Browse.dart';
 import 'package:rafflix/pages/ResetPass.dart';
 import 'package:rafflix/pages/UseProfile.dart';
 import 'package:rafflix/pages/homepage.dart';
+import 'package:rafflix/pages/signIn.dart';
+import 'package:rafflix/pages/signUp.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (context) => const HomePage(),
             '/item': (context) => ItemPage(),
-            '/exchange': (context) => const ResetPass(),
+            '/exchange': (context) => const SignUp(),
             '/profile': (context) => const AccountPage(),
           },
         );
