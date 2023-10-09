@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rafflix/pages/CreateNewPassword.dart';
+import 'package:rafflix/pages/ItemDetails.dart';
 import 'package:rafflix/pages/ResetPass.dart';
 import 'package:rafflix/pages/homepage.dart';
 import 'package:rafflix/pages/signIn.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/pages/signUp.dart';
 import 'package:rafflix/pages/UseProfile.dart';
+import 'package:rafflix/theme/theme_constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 800),
       builder: (BuildContext context, Widget? widget) {
         return MaterialApp(
+          theme: lightTheme,
+          darkTheme: darkTheme,
           debugShowCheckedModeBanner: false,
           home: MainWidget(),
         );
@@ -40,7 +44,7 @@ class _MainWidgetState extends State<MainWidget> {
   final List<Widget> _pages = [
     HomePage(),
     HomePage(),
-    SignIn(),
+    ItemDetails(),
     AccountPage(),
   ];
 
