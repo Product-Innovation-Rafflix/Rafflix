@@ -65,10 +65,15 @@ class _SignInState extends State<SignIn> {
                     child: Form(
                       child: Column(
                         children: [
-                          InputTextField('Enter your email', 'Email',
-                              const Icon(Icons.mail_outlined)),
+                          InputTextField('Enter your phone', 'Phone',
+                              const Icon(Icons.phone_outlined), 'phone'),
                           SizedBox(height: 15.h),
                           TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty ||
+                                  !RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$')
+                                      .hasMatch(value!)) {}
+                            },
                             obscureText: passenable,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(

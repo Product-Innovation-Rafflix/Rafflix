@@ -73,7 +73,7 @@ class _ResetPassState extends State<ResetPass> {
                       child: Column(
                         children: [
                           InputTextField('Enter your phone', 'Phone',
-                              const Icon(Icons.phone_rounded)),
+                              const Icon(Icons.phone_rounded), 'phone'),
                           SizedBox(height: 15.h),
                           SizedBox(
                             width: double.infinity,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({super.key});
@@ -10,12 +11,12 @@ class ItemCard extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           SizedBox(
-            height: 15,
+            height: 15.h,
           ),
           Container(
-            padding: EdgeInsets.only(right: 10),
-            width: MediaQuery.of(context).size.width - 30,
-            height: MediaQuery.of(context).size.height - 50,
+            padding: EdgeInsets.only(right: 10.w),
+            width: MediaQuery.of(context).size.width - 30.w,
+            height: MediaQuery.of(context).size.height - 50.w,
             child: GridView.count(
               crossAxisCount: 2,
               primary: false,
@@ -23,11 +24,30 @@ class ItemCard extends StatelessWidget {
               mainAxisSpacing: 15,
               childAspectRatio: 0.8,
               children: <Widget>[
-                buildCard('iPhone', '5000 MMK', 'assets/images/iPhone.png', 50,
-                    context),
-                buildCard('iPhone', '5000 MMK', 'imgPath', 50, context),
-                buildCard('iPhone', '5000 MMK', 'imgPath', 50, context),
-                buildCard('iPhone', '5000 MMK', 'imgPath', 50, context),
+                MyCard(
+                    name: 'iPhone 15 Pro Max',
+                    price: '5000 MMK / ticket',
+                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    TicketLeft: 50,
+                    context: context),
+                MyCard(
+                    name: 'iPhone 15 Pro Max',
+                    price: '5000 MMK / ticket',
+                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    TicketLeft: 50,
+                    context: context),
+                MyCard(
+                    name: 'iPhone 15 Pro Max',
+                    price: '5000 MMK / ticket',
+                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    TicketLeft: 50,
+                    context: context),
+                MyCard(
+                    name: 'iPhone 15 Pro Max',
+                    price: '5000 MMK / ticket',
+                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    TicketLeft: 50,
+                    context: context),
               ],
             ),
           )
@@ -35,11 +55,28 @@ class ItemCard extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget buildCard(
-      String name, String price, String imgPath, int TicketLeft, context) {
+class MyCard extends StatelessWidget {
+  const MyCard({
+    super.key,
+    required this.name,
+    required this.price,
+    required this.imgPath,
+    required this.TicketLeft,
+    required this.context,
+  });
+
+  final String name;
+  final String price;
+  final String imgPath;
+  final int TicketLeft;
+  final context;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 15, bottom: 5, left: 5, right: 5),
+      padding: EdgeInsets.only(top: 15.w, bottom: 5.w, left: 5.w, right: 5.w),
       child: InkWell(
         onTap: () {},
         child: Container(
@@ -55,6 +92,9 @@ class ItemCard extends StatelessWidget {
           ),
           child: Column(
             children: [
+              SizedBox(
+                height: 25.0,
+              ),
               Hero(
                   tag: imgPath,
                   child: Container(
@@ -67,25 +107,18 @@ class ItemCard extends StatelessWidget {
                             fit: BoxFit.contain)),
                   )),
               SizedBox(
-                height: 7.0,
+                height: 25.0.h,
               ),
               Text(price,
                   style: TextStyle(
                       color: Color(0xffcc8053),
                       fontFamily: 'Inter',
-                      fontSize: 14)),
+                      fontSize: 14.r)),
               Text(name,
                   style: TextStyle(
                       color: Color(0xffcc8053),
                       fontFamily: 'Inter',
-                      fontSize: 14)),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Container(
-                  color: Color(0xffbebeb),
-                  height: 1.0,
-                ),
-              )
+                      fontSize: 14.r)),
             ],
           ),
         ),
