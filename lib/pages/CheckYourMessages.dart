@@ -1,7 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rafflix/utils/BottomNavigationBar.dart';
-import 'package:rafflix/utils/text_field.dart';
 
 class CheckYourMessages extends StatefulWidget {
   const CheckYourMessages({Key? key}) : super(key: key);
@@ -15,7 +15,6 @@ class _CheckYourMessagesState extends State<CheckYourMessages> {
   bool repassenable = true;
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Material(
@@ -27,7 +26,7 @@ class _CheckYourMessagesState extends State<CheckYourMessages> {
                 ),
                 Transform.translate(
                   offset: Offset(0.w, 0.h),
-                  child: Container(
+                  child: SizedBox(
                     height: 283.h,
                     width: 283.w,
                     child: Image.network('https://via.placeholder.com/283x283'),
@@ -67,7 +66,7 @@ class _CheckYourMessagesState extends State<CheckYourMessages> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
-                  child: Container(
+                  child: SizedBox(
                     height: 300.h,
                     width: 300.w,
                     child: Form(
@@ -83,7 +82,7 @@ class _CheckYourMessagesState extends State<CheckYourMessages> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15)),
                                   elevation: 12.0,
-                                  backgroundColor: Color(0xFFFBC02D)),
+                                  backgroundColor: const Color(0xFFFBC02D)),
                               child: const Text('Open Message',
                                   style: TextStyle(color: Colors.black)),
                             ),

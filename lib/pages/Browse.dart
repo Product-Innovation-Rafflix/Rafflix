@@ -1,11 +1,15 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:rafflix/utils/BottomNavigationBar.dart';
 import 'package:rafflix/utils/ItemCard.dart';
 
 class Items extends StatelessWidget {
+  const Items({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ItemPage(),
     );
@@ -13,6 +17,8 @@ class Items extends StatelessWidget {
 }
 
 class ItemPage extends StatefulWidget {
+  const ItemPage({super.key});
+
   @override
   State<ItemPage> createState() => _ItemPageState();
 }
@@ -33,27 +39,27 @@ class _ItemPageState extends State<ItemPage>
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.only(left: 20.0),
+          padding: const EdgeInsets.only(left: 20.0),
           children: <Widget>[
-            SizedBox(height: 20.0),
-            Text(
+            const SizedBox(height: 20.0),
+            const Text(
               'Items',
               style: TextStyle(
                   fontFamily: 'Inter',
                   fontSize: 36,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TabBar(
               controller: _tabController,
               indicatorColor: Colors.transparent,
-              labelColor: Color(0xffc88d67),
+              labelColor: const Color(0xffc88d67),
               isScrollable: true,
-              labelPadding: EdgeInsets.only(right: 10),
-              unselectedLabelColor: Color(0xffcdcdcd),
-              tabs: [
+              labelPadding: const EdgeInsets.only(right: 10),
+              unselectedLabelColor: const Color(0xffcdcdcd),
+              tabs: const [
                 Tab(
                   child: Text(
                     'Fashion',
@@ -101,12 +107,12 @@ class _ItemPageState extends State<ItemPage>
                 ),
               ],
             ),
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height - 50,
               width: double.infinity,
               child: TabBarView(
                 controller: _tabController,
-                children: [
+                children: const [
                   ItemCard(),
                   ItemCard(),
                   ItemCard(),
@@ -118,7 +124,7 @@ class _ItemPageState extends State<ItemPage>
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 1),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 1),
     );
   }
 }

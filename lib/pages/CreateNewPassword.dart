@@ -1,6 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rafflix/utils/text_field.dart';
 
 class CreateNewPassword extends StatefulWidget {
   const CreateNewPassword({Key? key}) : super(key: key);
@@ -14,7 +15,6 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
   bool repassenable = true;
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Material(
@@ -55,7 +55,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 ),
                 Transform.translate(
                   offset: Offset(0.w, 0.h),
-                  child: Container(
+                  child: SizedBox(
                     height: 266.h,
                     width: 291.w,
                     child: Image.network('https://via.placeholder.com/291x266'),
@@ -66,7 +66,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
-                  child: Container(
+                  child: SizedBox(
                     height: 300.h,
                     width: 300.w,
                     child: Form(
@@ -140,7 +140,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15)),
                                   elevation: 12.0,
-                                  backgroundColor: Color(0xFFFBC02D)),
+                                  backgroundColor: const Color(0xFFFBC02D)),
                               child: const Text('Reset Password',
                                   style: TextStyle(color: Colors.black)),
                             ),

@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 60.h,
+        leadingWidth: 0.w,
         title: SizedBox(
           height: 40.h,
           child: TextField(
@@ -52,15 +53,15 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     width: 5.w,
                   ),
-                  Text(
+                  const Text(
                     '15000',
                     style: TextStyle(color: Colors.black),
                   ),
-                  Container(
+                  SizedBox(
                     height: 30.h, // Adjust the height of the icon as needed
                     width: 30
                         .h, // Set the width to match the height for a circular icon
-                    child: Icon(
+                    child: const Icon(
                       Icons.account_balance_wallet_rounded,
                       color: Colors.black, // Change the icon color
                     ),
@@ -88,7 +89,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(child: hotFlexBox()),
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 0),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 0),
     );
   }
 }

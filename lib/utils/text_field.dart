@@ -1,8 +1,10 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-TextFormField InputTextField(
-    String hint, String label, Icon icon, String type) {
+TextFormField InputTextField(String hint, String label, Icon icon, String type,
+    TextEditingController controller) {
   String? Function(String?)? validator;
 
   if (type == 'phone') {
@@ -23,6 +25,7 @@ TextFormField InputTextField(
     };
   }
   return TextFormField(
+    controller: controller,
     validator: validator,
     decoration: InputDecoration(
       border: OutlineInputBorder(

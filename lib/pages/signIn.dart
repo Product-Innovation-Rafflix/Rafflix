@@ -1,6 +1,57 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
+
+import 'dart:convert';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        Alignment,
+        AppBar,
+        BorderRadius,
+        BorderSide,
+        BuildContext,
+        Center,
+        Color,
+        Colors,
+        Column,
+        EdgeInsets,
+        ElevatedButton,
+        FontWeight,
+        Form,
+        FormState,
+        GlobalKey,
+        Icon,
+        IconButton,
+        Icons,
+        Image,
+        InkWell,
+        InputDecoration,
+        Key,
+        MainAxisAlignment,
+        Material,
+        Navigator,
+        Offset,
+        OutlineInputBorder,
+        Padding,
+        RoundedRectangleBorder,
+        Row,
+        SafeArea,
+        Scaffold,
+        ScaffoldMessenger,
+        SingleChildScrollView,
+        SizedBox,
+        SnackBar,
+        State,
+        StatefulWidget,
+        Text,
+        TextEditingController,
+        TextFormField,
+        TextStyle,
+        Transform,
+        Widget;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/utils/text_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -10,11 +61,61 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool passenable = true;
+  bool validate = false;
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    phoneController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
+  // ignore: non_constant_identifier_names
+  Future<void> LoginAccount(String phone, String password) async {
+    var url = "https://rafflixbackgroundsevice.onrender.com/api/logIn";
+    final response = await http.post(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{'phone': phone, 'password': password}),
+    );
+
+    if (response.statusCode == 200) {
+      // Access the cookies from the response headers
+      String? rawCookie = response.headers['set-cookie'];
+
+      if (rawCookie != null) {
+        // Save the cookies locally
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('cookie', rawCookie);
+
+        // Print the stored cookie
+        String? storedCookie = prefs.getString('cookie');
+        if (storedCookie != null) {
+        } else {}
+      }
+
+      // If the server did return a 200 OK response,
+      // you can parse the JSON response.
+      // var jsonResponse = json.decode(response.body);
+      // return jsonResponse;
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to log in.');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Material(
           child: SingleChildScrollView(
@@ -51,7 +152,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 Transform.translate(
                   offset: Offset(-85.w, -10.h),
-                  child: Container(
+                  child: SizedBox(
                     height: 408.h,
                     width: 356.w,
                     child: Image.asset('assets/images/signin.png'),
@@ -59,21 +160,28 @@ class _SignInState extends State<SignIn> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
-                  child: Container(
-                    height: 300.h,
+                  child: SizedBox(
+                    height: 330.h,
                     width: 300.w,
                     child: Form(
+                      key: formKey,
                       child: Column(
                         children: [
-                          InputTextField('Enter your phone', 'Phone',
-                              const Icon(Icons.phone_outlined), 'phone'),
+                          InputTextField(
+                              'Enter your phone',
+                              'Phone',
+                              const Icon(Icons.phone_outlined),
+                              'phone',
+                              phoneController),
                           SizedBox(height: 15.h),
                           TextFormField(
                             validator: (value) {
-                              if (value!.isEmpty ||
-                                  !RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$')
-                                      .hasMatch(value!)) {}
+                              if (value!.isEmpty) {
+                                return "Can't be a blank password";
+                              }
+                              return null;
                             },
+                            controller: passwordController,
                             obscureText: passenable,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -114,7 +222,7 @@ class _SignInState extends State<SignIn> {
                                     fontSize: 12.r,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Inter',
-                                    color: Color(0xFFFBC02D)),
+                                    color: const Color(0xFFFBC02D)),
                               ),
                             ),
                           ),
@@ -123,13 +231,25 @@ class _SignInState extends State<SignIn> {
                             width: double.infinity,
                             height: 50.h,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  validate = true;
+                                  const snackBar =
+                                      SnackBar(content: Text('Sign In'));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      snackBar); // Use ScaffoldMessenger
+                                }
+                                if (validate) {
+                                  LoginAccount(phoneController.text,
+                                      passwordController.text);
+                                }
+                              },
                               // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
                               style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15)),
                                   elevation: 12.0,
-                                  backgroundColor: Color(0xFFFBC02D)),
+                                  backgroundColor: const Color(0xFFFBC02D)),
                               child: const Text('Sign In',
                                   style: TextStyle(color: Colors.black)),
                             ),
@@ -142,7 +262,7 @@ class _SignInState extends State<SignIn> {
                               mainAxisAlignment: MainAxisAlignment
                                   .center, // Center the content horizontally
                               children: [
-                                Text("Don't have an account? "),
+                                const Text("Don't have an account? "),
                                 InkWell(
                                   onTap: () {
                                     Navigator.pushNamed(context, '/Signin');
@@ -153,7 +273,7 @@ class _SignInState extends State<SignIn> {
                                         fontSize: 12.r,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Inter',
-                                        color: Color(0xFFFBC02D)),
+                                        color: const Color(0xFFFBC02D)),
                                   ),
                                 ),
                               ],

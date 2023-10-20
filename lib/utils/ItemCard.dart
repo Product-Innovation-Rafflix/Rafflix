@@ -1,8 +1,11 @@
+// ignore_for_file: file_names, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key});
+  const ItemCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,13 +13,13 @@ class ItemCard extends StatelessWidget {
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
-          SizedBox(
-            height: 15.h,
+          const SizedBox(
+            height: 15,
           ),
           Container(
-            padding: EdgeInsets.only(right: 10.w),
-            width: MediaQuery.of(context).size.width - 30.w,
-            height: MediaQuery.of(context).size.height - 50.w,
+            padding: const EdgeInsets.only(right: 10),
+            width: MediaQuery.of(context).size.width - 30,
+            height: MediaQuery.of(context).size.height - 50,
             child: GridView.count(
               crossAxisCount: 2,
               primary: false,
@@ -27,25 +30,29 @@ class ItemCard extends StatelessWidget {
                 MyCard(
                     name: 'iPhone 15 Pro Max',
                     price: '5000 MMK / ticket',
-                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    imgPath:
+                        'https://imageio.forbes.com/specials-images/imageserve/637d5ab08792833e25c808be/0x0.png',
                     TicketLeft: 50,
                     context: context),
                 MyCard(
                     name: 'iPhone 15 Pro Max',
                     price: '5000 MMK / ticket',
-                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    imgPath:
+                        'https://imageio.forbes.com/specials-images/imageserve/637d5ab08792833e25c808be/0x0.png',
                     TicketLeft: 50,
                     context: context),
                 MyCard(
                     name: 'iPhone 15 Pro Max',
                     price: '5000 MMK / ticket',
-                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    imgPath:
+                        'https://imageio.forbes.com/specials-images/imageserve/637d5ab08792833e25c808be/0x0.png',
                     TicketLeft: 50,
                     context: context),
                 MyCard(
                     name: 'iPhone 15 Pro Max',
                     price: '5000 MMK / ticket',
-                    imgPath: 'assets/images/iPhone15ProMax.jpg',
+                    imgPath:
+                        'https://imageio.forbes.com/specials-images/imageserve/637d5ab08792833e25c808be/0x0.png',
                     TicketLeft: 50,
                     context: context),
               ],
@@ -59,13 +66,13 @@ class ItemCard extends StatelessWidget {
 
 class MyCard extends StatelessWidget {
   const MyCard({
-    super.key,
+    Key? key,
     required this.name,
     required this.price,
     required this.imgPath,
     required this.TicketLeft,
     required this.context,
-  });
+  }) : super(key: key);
 
   final String name;
   final String price;
@@ -92,33 +99,31 @@ class MyCard extends StatelessWidget {
           ),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
-              Hero(
-                  tag: imgPath,
-                  child: Container(
-                    height: 100.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              imgPath,
-                            ),
-                            fit: BoxFit.contain)),
-                  )),
+              CachedNetworkImage(
+                imageUrl: imgPath,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+                fit: BoxFit
+                    .cover, // Adjust the BoxFit property according to your requirement
+                width: 150, // Specify the desired width
+                height: 100, // Specify the desired height
+              ),
               SizedBox(
                 height: 25.0.h,
               ),
               Text(price,
                   style: TextStyle(
-                      color: Color(0xffcc8053),
+                      color: const Color(0xFFFBC02D),
                       fontFamily: 'Inter',
-                      fontSize: 14.r)),
+                      fontSize: 14)),
               Text(name,
                   style: TextStyle(
-                      color: Color(0xffcc8053),
+                      color: const Color(0xFFFBC02D),
                       fontFamily: 'Inter',
-                      fontSize: 14.r)),
+                      fontSize: 14)),
             ],
           ),
         ),
