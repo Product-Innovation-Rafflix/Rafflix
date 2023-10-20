@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafflix/utils/BottomNavigationBar.dart';
 import 'package:rafflix/utils/hotFlexBox.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,13 +13,17 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 60.h,
+        leadingWidth: 0.w,
         title: SizedBox(
           height: 40.h,
           child: TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
-                borderSide: const BorderSide(width: 1),
+                borderSide: const BorderSide(
+                  width: 1,
+                  color: Colors.black,
+                ),
               ),
               hintText: 'Search Raffle Item',
               contentPadding: const EdgeInsets.all(10.0),
@@ -48,15 +53,15 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     width: 5.w,
                   ),
-                  Text(
+                  const Text(
                     '15000',
                     style: TextStyle(color: Colors.black),
                   ),
-                  Container(
+                  SizedBox(
                     height: 30.h, // Adjust the height of the icon as needed
                     width: 30
                         .h, // Set the width to match the height for a circular icon
-                    child: Icon(
+                    child: const Icon(
                       Icons.account_balance_wallet_rounded,
                       color: Colors.black, // Change the icon color
                     ),
@@ -84,6 +89,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(child: hotFlexBox()),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 0),
     );
   }
 }

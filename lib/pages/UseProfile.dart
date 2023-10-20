@@ -1,22 +1,91 @@
-// ignore_for_file: empty_statements
+// ignore_for_file: empty_statements, file_names
+
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:rafflix/utils/BottomNavigationBar.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _AccountPageState createState() => _AccountPageState();
 }
 
 class _AccountPageState extends State<AccountPage> {
+  late Map<String, dynamic> userData = {};
+
+  @override
+  void initState() {
+    super.initState();
+    getUserData();
+  }
+
+  Future<String?> getStoredCookie() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('cookie');
+  }
+
+  Future<void> getUserData() async {
+    const url =
+        "https://rafflixbackgroundsevice.onrender.com/profile"; // Replace with your server URL
+    final storedCookie =
+        await getStoredCookie(); // Retrieve the stored cookie from local storage
+
+    final response = await http.get(
+      Uri.parse(url),
+      headers: <String, String>{'Cookie': storedCookie ?? ''},
+    );
+
+    if (response.statusCode == 200) {
+      setState(() {
+        final Map<String, dynamic> parsedData = json.decode(response.body);
+        userData = {
+          'name': parsedData['name'] ?? '',
+          'phone': parsedData['_id'] ?? '',
+          'profile': parsedData['profile'] ?? '',
+          // Add other required fields similarly
+        };
+      });
+    } else {
+      throw Exception('Failed to load user data');
+    }
+  }
+
+  Future<void> logOut() async {
+    const url =
+        "https://rafflixbackgroundsevice.onrender.com/logout"; // Replace with your server logout URL
+    final storedCookie = await getStoredCookie();
+
+    final response = await http.get(
+      Uri.parse(url),
+      headers: <String, String>{'Cookie': storedCookie ?? ''},
+    );
+
+    print("Logout URL: $url");
+
+    if (response.statusCode == 200) {
+      // Clear the stored cookie in the shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.remove('cookie');
+      // Perform any additional actions needed upon successful logout
+      print("Logout successful");
+    } else {
+      print("Logout failed");
+      throw Exception('Failed to log out');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfffffffff),
+      backgroundColor: const Color(0xffffffff),
       body: ListView(
-        padding: EdgeInsets.all(12),
-        physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(12),
+        physics: const BouncingScrollPhysics(),
         children: [
           Container(
             height: 35,
@@ -26,29 +95,40 @@ class _AccountPageState extends State<AccountPage> {
           colorTiles(),
           divider(),
           bwTiles(),
+          ElevatedButton(
+            onPressed: () {
+              logOut(); // Call the logout function when the button is pressed
+            },
+            child: const Text('Logout'),
+          ),
         ],
       ),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 3),
     );
   }
 
   Widget userTile() {
-    String url =
-        "https://cdn.britannica.com/55/174255-050-526314B6/brown-Guernsey-cow.jpg";
+    String profileBase64 = userData['profile'] ??
+        ""; // Assuming the profile is provided as a base64 string
     return ListTile(
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(url),
-      ),
+      leading: profileBase64.isNotEmpty
+          ? CircleAvatar(
+              backgroundImage: MemoryImage(base64.decode(profileBase64)),
+            )
+          : const CircleAvatar(
+              child: Icon(Icons.person),
+            ),
       title: Txt(
-        text: "Minn Htet Ko",
+        text: userData['name'] ?? "User Name",
         fontWeight: FontWeight.bold,
       ),
-      subtitle: Txt(text: "Lee Lee Lar Lar"),
+      subtitle: Txt(text: userData['phone'] ?? "Phone Number"),
     );
   }
 
   Widget divider() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
       child: Divider(
         thickness: 1.5,
       ),
@@ -90,22 +170,25 @@ class _AccountPageState extends State<AccountPage> {
       {bool blackandWhite = false}) {
     return ListTile(
       leading: Container(
-        child: Icon(
-          icon,
-          color: blackandWhite ? Color(0xfff3f4fe) : color.withOpacity(0.10),
-        ),
         height: 45,
         width: 45,
         decoration: BoxDecoration(
-          color: blackandWhite ? Color(0xfff3f4fe) : color.withOpacity(0.10),
+          color:
+              blackandWhite ? const Color(0xfff3f4fe) : color.withOpacity(0.10),
           borderRadius: BorderRadius.circular(18),
+        ),
+        child: Icon(
+          icon,
+          color:
+              blackandWhite ? const Color(0xfff3f4fe) : color.withOpacity(0.10),
         ),
       ),
       title: Text(
         text,
-        style: TextStyle(fontWeight: FontWeight.w500),
+        style: const TextStyle(fontWeight: FontWeight.w500),
       ),
-      trailing: Icon(Icons.arrow_forward_ios, color: Colors.black, size: 20),
+      trailing:
+          const Icon(Icons.arrow_forward_ios, color: Colors.black, size: 20),
     );
   }
 }
@@ -115,7 +198,8 @@ class Txt extends StatelessWidget {
   final FontWeight fontWeight;
 
   // Make the fontWeight parameter optional with a default value
-  Txt({required this.text, this.fontWeight = FontWeight.normal});
+  const Txt(
+      {super.key, required this.text, this.fontWeight = FontWeight.normal});
 
   @override
   Widget build(BuildContext context) {

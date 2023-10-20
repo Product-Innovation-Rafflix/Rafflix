@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,27 +17,26 @@ class _MyCarouselSliderState extends State<MyCarouselSlider> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          SizedBox(height: 30.h),
-          CarouselSlider.builder(
-            itemCount: carruselImages.length,
-            itemBuilder: (context, index, realIndex) {
-              final carruselImage = carruselImages[index];
-              return CardImages(
-                carruselImages: carruselImages[index],
-              );
-            },
-            options: CarouselOptions(
-              height: 200.h,
-              autoPlay: true,
-              autoPlayCurve: Curves.easeInOut,
-              enlargeCenterPage: true,
-              autoPlayInterval: Duration(seconds: 3),
-              scrollDirection: Axis.horizontal,
-            ),
+      children: [
+        SizedBox(height: 30.h),
+        CarouselSlider.builder(
+          itemCount: carruselImages.length,
+          itemBuilder: (context, index, realIndex) {
+            return CardImages(
+              carruselImages: carruselImages[index],
+            );
+          },
+          options: CarouselOptions(
+            height: 200.h,
+            autoPlay: true,
+            autoPlayCurve: Curves.easeInOut,
+            enlargeCenterPage: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            scrollDirection: Axis.horizontal,
           ),
-        ],
-      );
+        ),
+      ],
+    );
   }
 }
 
@@ -52,7 +53,7 @@ class CardImages extends StatelessWidget {
         child: InkWell(
           onTap: () {},
           child: FadeInImage(
-            placeholder: AssetImage("assets/images/loading1.gif"),
+            placeholder: const AssetImage("assets/images/loading1.gif"),
             image: AssetImage(carruselImages.image),
             fit: BoxFit.cover,
           ),

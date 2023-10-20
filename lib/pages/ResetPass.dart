@@ -1,5 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rafflix/utils/BottomNavigationBar.dart';
 import 'package:rafflix/utils/text_field.dart';
 
 class ResetPass extends StatefulWidget {
@@ -11,9 +14,9 @@ class ResetPass extends StatefulWidget {
 
 class _ResetPassState extends State<ResetPass> {
   bool passenable = true;
+  final myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Material(
@@ -53,26 +56,30 @@ class _ResetPassState extends State<ResetPass> {
                   height: 16.h,
                 ),
                 Transform.translate(
-                  offset: Offset(0, 0),
-                  child: Container(
+                  offset: const Offset(0, 0),
+                  child: SizedBox(
                     height: 266.h,
                     width: 291.w,
                     child: Image.network("https://via.placeholder.com/291x266"),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
-                  child: Container(
+                  child: SizedBox(
                     height: 300.h,
                     width: 300.w,
                     child: Form(
                       child: Column(
                         children: [
-                          InputTextField('Enter your phone', 'Phone',
-                              const Icon(Icons.phone_rounded)),
+                          InputTextField(
+                              'Enter your phone',
+                              'Phone',
+                              const Icon(Icons.phone_rounded),
+                              'phone',
+                              myController),
                           SizedBox(height: 15.h),
                           SizedBox(
                             width: double.infinity,
@@ -84,7 +91,7 @@ class _ResetPassState extends State<ResetPass> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15)),
                                   elevation: 12.0,
-                                  backgroundColor: Color(0xFFFBC02D)),
+                                  backgroundColor: const Color(0xFFFBC02D)),
                               child: const Text('Reset Password',
                                   style: TextStyle(color: Colors.black)),
                             ),
@@ -99,6 +106,7 @@ class _ResetPassState extends State<ResetPass> {
           ),
         ),
       ),
+      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 2),
     );
   }
 }
