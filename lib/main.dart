@@ -5,7 +5,7 @@ import 'package:rafflix/pages/UseProfile.dart';
 import 'package:rafflix/pages/homepage.dart';
 import 'package:rafflix/pages/retriveCookie.dart';
 import 'package:rafflix/pages/signIn.dart';
-import 'package:rafflix/pages/signUp.dart';
+import 'package:rafflix/pages/signUp.dart'
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 800),
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          theme: lightTheme,
+          darkTheme: darkTheme,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.amber,
@@ -38,3 +40,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
