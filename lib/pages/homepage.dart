@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.white,
         toolbarHeight: 60.h,
         leadingWidth: 0.w,
+        leading: const SizedBox(),
         title: SizedBox(
           height: 40.h,
           child: TextField(

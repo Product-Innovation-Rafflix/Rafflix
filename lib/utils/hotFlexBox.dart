@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/models/category_model.dart';
 import 'package:rafflix/models/Recommend_slider_model.dart';
 import 'package:rafflix/utils/sideBar.dart';
-import 'package:rafflix/utils/ItemCard.dart';
+import 'package:rafflix/utils/itemCard.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 // ignore: must_be_immutable

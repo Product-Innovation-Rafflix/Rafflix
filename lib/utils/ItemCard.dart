@@ -85,7 +85,12 @@ class MyCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 15.w, bottom: 5.w, left: 5.w, right: 5.w),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/item',
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),

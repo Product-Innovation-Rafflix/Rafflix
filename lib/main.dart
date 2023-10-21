@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rafflix/pages/Browse.dart';
+import 'package:rafflix/pages/ItemDetails.dart';
 import 'package:rafflix/pages/UseProfile.dart';
 import 'package:rafflix/pages/homepage.dart';
 import 'package:rafflix/pages/retriveCookie.dart';
 import 'package:rafflix/pages/signIn.dart';
-import 'package:rafflix/pages/signUp.dart'
+import 'package:rafflix/pages/signUp.dart';
+import 'package:rafflix/utils/socket_manager.dart';
 
 void main() {
+  SocketManager(); // Initialize the Socket.IO connection
   runApp(const MyApp());
 }
 
@@ -20,8 +23,6 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 800),
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
-          theme: lightTheme,
-          darkTheme: darkTheme,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.amber,
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             '/': (context) => const HomePage(),
-            '/item': (context) => const ItemPage(),
+            '/item': (context) => const ItemDetails(),
+            '/items': (context) => const ItemPage(),
             '/exchange': (context) => const RetrieveCookiePage(),
             '/profile': (context) => const AccountPage(),
             '/signin': (context) => const SignIn(),
@@ -40,4 +42,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -57,7 +57,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           GestureDetectorButton(
             icon: Icons.category_rounded,
             label: 'Item',
-            route: '/item',
+            route: '/items',
             isSelected: widget.currentIndex == 1,
           ),
           GestureDetectorButton(
