@@ -6,8 +6,16 @@ import 'package:rafflix/utils/socket_manager.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ItemDetails extends StatefulWidget {
-  const ItemDetails({Key? key}) : super(key: key);
+  final String itemName; // Add this line
 
+  const ItemDetails({Key? key, required this.itemName}) : super(key: key);
+
+  static Map<String, String> itemAssetMap = {
+    'Item-1': 'assets/images/house-.jpg',
+    'Item-2': 'assets/images/bmw-.jpg',
+    'Item-3': 'assets/images/iPhone15ProMax.jpg',
+    // Add more items as needed
+  };
   @override
   State<ItemDetails> createState() => _ItemDetailsState();
 }
@@ -16,16 +24,23 @@ class _ItemDetailsState extends State<ItemDetails> {
   late IO.Socket socket;
   List<Map> mydata = [];
 
+  void _handleSocketEvent(dynamic data) {
+    if (mounted) {
+      setState(() {
+        mydata = parseResponseData(data.toString());
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     socket = SocketManager().socket;
-    socket.emit('request_tickets', 'Item-3');
-    socket.on('hello', (data) {
-      setState(() {
-        mydata = parseResponseData(data.toString());
-      });
-    });
+    socket.emit(
+        'request_tickets',
+        widget
+            .itemName); // Use widget.itemName to emit the socket event dynamically
+    socket.on('hello', _handleSocketEvent);
   }
 
   List<Map> parseResponseData(String response) {
@@ -67,13 +82,15 @@ class _ItemDetailsState extends State<ItemDetails> {
     }
 
     // Trigger the tickt_changes event
-    socket.emit("tickt_changes", ["Item-3", json.encode(selectedItems)]);
+    socket.emit("tickt_changes", [widget.itemName, json.encode(selectedItems)]);
   }
 
   @override
   Widget build(BuildContext context) {
     int trueValuesCount =
         mydata.where((element) => element['value'] == 'true').length;
+    String assetPath = ItemDetails.itemAssetMap[widget.itemName] ??
+        'assets/images/iPhone15ProMax.jpg';
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -88,9 +105,9 @@ class _ItemDetailsState extends State<ItemDetails> {
                 child: Container(
                   width: 360.w,
                   height: 300.h,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/iPhone15ProMax.jpg"),
+                      image: AssetImage(assetPath),
                     ),
                   ),
                 ),

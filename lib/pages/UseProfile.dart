@@ -30,28 +30,35 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Future<void> getUserData() async {
-    const url =
-        "https://rafflixbackgroundsevice.onrender.com/profile"; // Replace with your server URL
+    const url = "https://rafflixbackgroundsevice.onrender.com/profile";
     final storedCookie =
-        await getStoredCookie(); // Retrieve the stored cookie from local storage
+        await getStoredCookie(); // Await the result of getStoredCookie
 
-    final response = await http.get(
-      Uri.parse(url),
-      headers: <String, String>{'Cookie': storedCookie ?? ''},
-    );
+    if (storedCookie != null) {
+      // Check if the stored cookie is not null
+      final response = await http.get(
+        Uri.parse(url),
+        headers: <String, String>{'Cookie': storedCookie},
+      );
 
-    if (response.statusCode == 200) {
-      setState(() {
-        final Map<String, dynamic> parsedData = json.decode(response.body);
-        userData = {
-          'name': parsedData['name'] ?? '',
-          'phone': parsedData['_id'] ?? '',
-          'profile': parsedData['profile'] ?? '',
-          // Add other required fields similarly
-        };
-      });
+      if (response.statusCode == 200) {
+        setState(() {
+          final Map<String, dynamic> parsedData = json.decode(response.body);
+          userData = {
+            'name': parsedData['name'] ?? '',
+            'phone': parsedData['_id'] ?? '',
+            'profile': parsedData['profile'] ?? '',
+            'owned_tickets':
+                parsedData['own_tickets'] ?? [], // Add the owned tickets data
+            // Add other required fields similarly
+          };
+        });
+      } else {
+        throw Exception('Failed to load user data');
+      }
     } else {
-      throw Exception('Failed to load user data');
+      throw Exception(
+          'Cookie not found'); // Handle the case when the cookie is not found
     }
   }
 
@@ -108,21 +115,43 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget userTile() {
-    String profileBase64 = userData['profile'] ??
-        ""; // Assuming the profile is provided as a base64 string
-    return ListTile(
-      leading: profileBase64.isNotEmpty
-          ? CircleAvatar(
-              backgroundImage: MemoryImage(base64.decode(profileBase64)),
-            )
-          : const CircleAvatar(
-              child: Icon(Icons.person),
+    String profileBase64 = userData['profile'] ?? "";
+    List<dynamic> ownedTickets =
+        userData['owned_tickets'] ?? []; // Get the owned tickets
+
+    return Column(
+      children: [
+        ListTile(
+          leading: profileBase64.isNotEmpty
+              ? CircleAvatar(
+                  backgroundImage: MemoryImage(base64.decode(profileBase64)),
+                )
+              : const CircleAvatar(
+                  child: Icon(Icons.person),
+                ),
+          title: Txt(
+            text: userData['name'] ?? "User Name",
+            fontWeight: FontWeight.bold,
+          ),
+          subtitle: Txt(text: userData['phone'] ?? "Phone Number"),
+        ),
+        if (ownedTickets.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Text(
+            "Owned Tickets",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
             ),
-      title: Txt(
-        text: userData['name'] ?? "User Name",
-        fontWeight: FontWeight.bold,
-      ),
-      subtitle: Txt(text: userData['phone'] ?? "Phone Number"),
+          ),
+          for (var ticket in ownedTickets)
+            ListTile(
+              title: Text(ticket.toString()), // Display each ticket
+            ),
+        ] else ...[
+          Text("No Tickets")
+        ],
+      ],
     );
   }
 

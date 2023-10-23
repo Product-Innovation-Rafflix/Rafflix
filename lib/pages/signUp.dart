@@ -75,7 +75,6 @@ class _SignUpState extends State<SignUp> {
                   child: Container(
                     width: 362.w,
                     height: 362.h,
-                    color: Colors.black,
                     child: Image.asset("assets/images/signup.png"),
                   ),
                 ),

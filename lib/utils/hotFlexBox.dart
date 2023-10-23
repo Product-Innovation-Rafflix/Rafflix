@@ -246,15 +246,24 @@ class hotFlexBox extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: SizedBox(
-                height: 205.h,
+                height: 230.h,
                 child: Row(
                   children: [
                     MyCard(
                         name: 'iPhone 15 Pro Max',
                         price: '5000 MMK / ticket',
                         imgPath:
-                            'https://imageio.forbes.com/specials-images/imageserve/637d5ab08792833e25c808be/0x0.png',
+                            'https://d33wubrfki0l68.cloudfront.net/1b391b66041659bc2e38770ae04dccffc0f7b094/e07a3/static/b2c3890c4e0d5dbe6ec37c5cd8c7dc6d/e414c/home-manhatton-34-sd-29-scaled.jpg',
                         TicketLeft: 50,
+                        itemName: 'Item-1',
+                        context: context),
+                    MyCard(
+                        name: 'iPhone 15 Pro Max',
+                        price: '5000 MMK / ticket',
+                        imgPath:
+                            'https://www.topgear.com/sites/default/files/2023/08/P90492179_highRes_bmw-i7-xdrive60-m-sp%20%281%29.jpg',
+                        TicketLeft: 50,
+                        itemName: 'Item-2',
                         context: context),
                     MyCard(
                         name: 'iPhone 15 Pro Max',
@@ -262,13 +271,7 @@ class hotFlexBox extends StatelessWidget {
                         imgPath:
                             'https://imageio.forbes.com/specials-images/imageserve/637d5ab08792833e25c808be/0x0.png',
                         TicketLeft: 50,
-                        context: context),
-                    MyCard(
-                        name: 'iPhone 15 Pro Max',
-                        price: '5000 MMK / ticket',
-                        imgPath:
-                            'https://imageio.forbes.com/specials-images/imageserve/637d5ab08792833e25c808be/0x0.png',
-                        TicketLeft: 50,
+                        itemName: 'Item-3',
                         context: context),
                   ],
                 ),

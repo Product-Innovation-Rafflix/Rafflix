@@ -10,7 +10,8 @@ import 'package:rafflix/pages/signUp.dart';
 import 'package:rafflix/utils/socket_manager.dart';
 
 void main() {
-  SocketManager(); // Initialize the Socket.IO connection
+  WidgetsFlutterBinding.ensureInitialized();
+  SocketManager();
   runApp(const MyApp());
 }
 
@@ -30,7 +31,13 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             '/': (context) => const HomePage(),
-            '/item': (context) => const ItemDetails(),
+            '/item': (context) {
+              final String? itemName =
+                  ModalRoute.of(context)!.settings.arguments as String?;
+              return ItemDetails(
+                  itemName:
+                      itemName!); // Use the null-aware operator to ensure the value is not null
+            },
             '/items': (context) => const ItemPage(),
             '/exchange': (context) => const RetrieveCookiePage(),
             '/profile': (context) => const AccountPage(),

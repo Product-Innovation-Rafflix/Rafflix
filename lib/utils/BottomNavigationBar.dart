@@ -27,7 +27,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   Future<void> checkLoginStatus() async {
     String? storedCookie = await getStoredCookie();
     setState(() {
-      isLoggedIn = storedCookie != null;
+      isLoggedIn = storedCookie != null && storedCookie.isNotEmpty;
     });
   }
 
@@ -62,22 +62,22 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           ),
           GestureDetectorButton(
             icon: Icons.replay_circle_filled_rounded,
-            label: 'exchange',
-            route: '/exchange',
+            label: 'test',
+            route: '/signup',
             isSelected: widget.currentIndex == 2,
           ),
           // Conditionally add the profile button based on the isLoggedIn state
           if (isLoggedIn)
             GestureDetectorButton(
               icon: Icons.person_2_rounded,
-              label: 'profile',
+              label: 'Profile',
               route: '/profile',
               isSelected: widget.currentIndex == 3,
             )
           else
             GestureDetectorButton(
               icon: Icons.login_rounded,
-              label: 'sign in',
+              label: 'Sign In',
               route: '/signin', // Route to the sign-in page if not logged in
               isSelected: widget.currentIndex == 3,
             ),
